@@ -5,12 +5,13 @@
 // Tell Max how many outlets
 // Then set UI to tell which inlet/outlet does or shows what
 
-inlets = 2;
+inlets = 3;
 
 //inlets
 
 setinletassist(0,"I eat bangs");
 setinletassist(1,"Get Tracking");
+setinletassist(2,"Get Word");
 
 // VARIABLES
 
@@ -18,6 +19,7 @@ var xgen = 0;
 var ygen = 0;
 var xtrack = 0;
 var ytrack = 0;
+var pauseBetweenMons = false;
 
 // EXECUTE --------------------------------------------------------------------
 
@@ -29,7 +31,7 @@ function bang() {
 	generateCoordinates();
 	
 	post("Generated coords are: " + xgen + " , " + ygen + "\n");
-	post("Tracking coords are: " + xtrack + " , " + ytrack  + "\n");
+	//post("Tracking coords are: " + xtrack + " , " + ytrack  + "\n");
 }
 
 // Access pack object and get integer values
@@ -44,8 +46,17 @@ function list() {
 // GENERATE COORDINATES
 // get random number and export through respective outlet
 function generateCoordinates() {
+	var xmin = 80;
+	var xmax = 580;
+	var ymin = 60;
+	var ymax = 350;
+	
+	xgen = Math.floor(Math.random() * (xmax - xmin) + xmin);
+	ygen = Math.floor(Math.random() * (ymax - ymin) + ymin);
+	/*
 	xgen = Math.floor(Math.random() * 101);
 	ygen = Math.floor(Math.random() * 101);
+	*/
 }
 
 // COLLISION DETECTION
@@ -78,7 +89,7 @@ function collisionDetection() {
 	
 	// Right now, if the coordinates are within each other by range of five
 	// They are technically within collision parameters
-	var range = 5;
+	var range = 10;
 	var xmatch = false;
 	var ymatch = false;
 	
@@ -91,10 +102,10 @@ function collisionDetection() {
 	}
 	
 	if (xmatch == true && ymatch == true) {
-		post("collision detected");
+		post("Monster was defeated!");
 		outlet(0,"bang");
-	} else {
+	} /*else {
 		post("No collision detected");
-	}
+	}*/
 	
 }
