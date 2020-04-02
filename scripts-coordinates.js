@@ -30,7 +30,7 @@ var pauseBetweenMons = false;
 function bang() {
 	generateCoordinates();
 	
-	post("Generated coords are: " + xgen + " , " + ygen + "\n");
+	post("New Monster at: " + xgen + " , " + ygen + "\n");
 	//post("Tracking coords are: " + xtrack + " , " + ytrack  + "\n");
 }
 
@@ -89,7 +89,7 @@ function collisionDetection() {
 	
 	// Right now, if the coordinates are within each other by range of five
 	// They are technically within collision parameters
-	var range = 10;
+	var range = 20;
 	var xmatch = false;
 	var ymatch = false;
 	
