@@ -6,12 +6,18 @@
 // Then set UI to tell which inlet/outlet does or shows what
 
 inlets = 3;
+outlets = 2;
 
 //inlets
 
 setinletassist(0,"I eat bangs");
 setinletassist(1,"Get Tracking");
 setinletassist(2,"Get Word");
+
+//outlets
+
+setoutletassist(0,"Bang and Do Things");
+setoutletassist(1,"Visible Coordinates");
 
 // VARIABLES
 
@@ -30,7 +36,7 @@ var pauseBetweenMons = false;
 function bang() {
 	generateCoordinates();
 	
-	post("New Monster at: " + xgen + " , " + ygen + "\n");
+	//post("New Monster at: " + xgen + " , " + ygen + "\n");
 	//post("Tracking coords are: " + xtrack + " , " + ytrack  + "\n");
 }
 
@@ -53,6 +59,8 @@ function generateCoordinates() {
 	
 	xgen = Math.floor(Math.random() * (xmax - xmin) + xmin);
 	ygen = Math.floor(Math.random() * (ymax - ymin) + ymin);
+	
+	outlet(1,"New Monster at: \n" + xgen + " , " + ygen + "");
 	/*
 	xgen = Math.floor(Math.random() * 101);
 	ygen = Math.floor(Math.random() * 101);
